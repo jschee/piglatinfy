@@ -1,0 +1,22 @@
+<%= form_with url: wikis_path, class: 'shadow' do |form| %>
+  <div>
+  <%= form.text_field :url, placeholder: "i.e. 'https://en.wikipedia.org/wiki/Hua_Mulan'", required: true, class: "border p-2 w-full" %>
+  </div>
+  <%= form.button class: "bg-green-500 hover:bg-green-600 p-2 rounded text-white w-full" do %>
+    <span class="show-when-enabled">
+      Translate to pig latin
+    </span>
+    <span class="show-when-disabled">Translating...</span>
+  <% end %>
+<% end %>
+<br>
+<br>
+<div class="mb-8">
+<p><%= @wiki.heading %></p>
+</div>
+</div>
+<p><%= @wiki.body %></p>
+</div>
+<br>
+source: <%= link_to "#{@wiki.url}", @wiki.url, class: 'text-blue-500 hover:text-blue-600' %>
+

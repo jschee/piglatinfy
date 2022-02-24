@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bg-pink {
+  background: #F5CFDD;
+}
+
+button .show-when-enabled {
+  display: initial;
+}
+button .show-when-disabled {
+  display: none;
+}
+button[disabled] .show-when-enabled {
+  display: none;
+}
+button[disabled] .show-when-disabled {
+  display: initial;
+}

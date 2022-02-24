@@ -1,0 +1,19 @@
+<%= turbo_stream_from "wiki" %>
+<section class="max-w-xl mx-auto pt-16 pb-10">
+  <p class="text-8xl text-center">🐷</p>
+  <br>
+  <p class="text-center text-lg">Paste a wikipedia article</p>
+  <div class="mt-8" id="search">
+    <%= form_with url: wikis_path, class: 'shadow' do |form| %>
+      <div>
+        <%= form.text_field :url, placeholder: "i.e. 'https://en.wikipedia.org/wiki/Hua_Mulan'", required: true, class: "border p-2 w-full" %>
+      </div>
+      <%= form.button class: "bg-green-500 hover:bg-green-600 p-2 rounded text-white w-full" do %>
+        <span class="show-when-enabled">
+          Translate to pig latin
+        </span>
+        <span class="show-when-disabled">Translating...</span>
+      <% end %>
+    <% end %>
+  </div>
+</section>
