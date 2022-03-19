@@ -24,6 +24,8 @@ class Wiki
     get_wiki_page
   end
 
+  private
+
   def get_wiki_page
     page = URI.open(@url)
     doc = Nokogiri::HTML(page)
