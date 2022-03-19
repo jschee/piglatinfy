@@ -1,12 +1,18 @@
-<%= turbo_stream_from "wiki" %>
 <section class="max-w-xl mx-auto pt-16 pb-10">
   <p class="text-8xl text-center">🐷</p>
   <br>
-  <p class="text-center text-lg">Paste a wikipedia article</p>
+  <p class="text-center text-lg">piglatinfy</p>
   <div class="mt-8" id="search">
-    <%= form_with url: wikis_path, class: 'shadow' do |form| %>
+    <%= form_with model: @wiki, url: wikis_path, class: 'shadow' do |form| %>
+      <% if response.status == 422 %>
+        <div class="border-green-400 border rounded-tl rounded-tr p-2 bg-white text-xs">
+          <p class="font-semibold mb-2 text-green-600">There was a problem</p>
+          <%= @error_message %>
+        </div>
+      <% end %>
+
       <div>
-        <%= form.text_field :url, placeholder: "i.e. 'https://en.wikipedia.org/wiki/Hua_Mulan'", required: true, class: "border p-2 w-full" %>
+        <%= form.text_field :url, placeholder: "i.e. 'https://en.wikipedia.org/wiki/Hua_Mulan'", class: "border p-2 w-full" %>
       </div>
       <%= form.button class: "bg-green-500 hover:bg-green-600 p-2 rounded text-white w-full" do %>
         <span class="show-when-enabled">

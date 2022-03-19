@@ -4,9 +4,14 @@ class WikisController < ApplicationController
   def create
     url =  params[:url]
     @wiki = Wiki.new(url: url)
-    @wiki.process
     respond_to do |format|
-      format.turbo_stream
+      if url.present?
+        @wiki.process
+        format.turbo_stream
+      else
+        format.html { render :index, status: :unprocessable_entity }
+        @error_message = "No wikipedia article was found"
+      end
     end
   end
 end
